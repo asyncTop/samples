@@ -7,8 +7,9 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="cn.sh.cjvision.mavericks_sample.MainFragment"
+        android:name="cn.sh.cjvision.epoxy_sample.databinding.MainFragment"
         android:label="Main Fragment"
-        tools:layout="@layout/fragment_hot_key"/>
+        tools:layout="@layout/fragment_article">
+    </fragment>
 
 </navigation>

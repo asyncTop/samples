@@ -1,6 +1,6 @@
-package cn.sh.cjvision.mavericks_sample.di
+package cn.sh.cjvision.epoxy_sample.di
 
-import cn.sh.cjvision.mavericks_sample.net.Api
+import cn.sh.cjvision.epoxy_sample.net.Api
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,7 +11,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class ApiModule {
-
     @Provides
     @Singleton
     fun providerApi(retrofit: Retrofit): Api {

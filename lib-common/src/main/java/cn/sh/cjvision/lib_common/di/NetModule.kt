@@ -55,4 +55,16 @@ class NetModule {
             it.proceed(builder.build())
         }
     }
+
+    @Provides
+    @Singleton
+    fun providerBaseUrl(): String {
+        return if (BuildConfig.DEBUG) "https://www.wanandroid.com/" else "https://www.wanandroid.com/"
+    }
+
+    @Provides
+    @Singleton
+    fun providerHeader(): HashMap<String, String> {
+        return HashMap()
+    }
 }
