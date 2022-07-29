@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import cn.sh.cjvision.mavericks_sample.databinding.FragmentHotKeyBinding
 import com.airbnb.mvrx.*
 import com.drake.brv.utils.divider
@@ -19,23 +20,23 @@ class MainFragment : Fragment(), MavericksView {
     private val TAG = this.javaClass.simpleName
 
     private val viewModel: MainViewModel by fragmentViewModel()
-    private var binding:FragmentHotKeyBinding?=null
+    private var binding: FragmentHotKeyBinding? = null
 
     override fun invalidate() = withState(viewModel) { state ->
-        when(state.request){
-            is Loading->{
-                Log.d(TAG,"请求中")
+        when (state.request) {
+            is Loading -> {
+                Log.d(TAG, "请求中")
                 binding?.refresh?.refreshing()
                 return@withState
             }
-            is Success->{
+            is Success -> {
                 binding?.refresh?.finishRefresh()
-                binding?.recycle?.models = state.hotKeys
+
             }
-            is Fail->{
+            is Fail -> {
                 binding?.refresh?.finishRefresh()
             }
-            else->{
+            else -> {
                 binding?.refresh?.finishRefresh()
             }
         }
@@ -44,35 +45,16 @@ class MainFragment : Fragment(), MavericksView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        viewModel.onAsync(MainState::request, deliveryMode = uniqueOnly(), onFail = {
-//            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-//                Snackbar.make(
-//                    binding!!.root,
-//                    "请求失败",
-//                    Snackbar.LENGTH_INDEFINITE
-//                )
-//                    .apply {
-//                        setAction("DISMISS") {
-//                            this.dismiss()
-//                        }
-//                        show()
-//                    }
-//            }
-//        }, onSuccess = {
-//            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-//                Snackbar.make(
-//                    binding!!.root,
-//                    "请求成功",
-//                    Snackbar.LENGTH_INDEFINITE
-//                )
-//                    .apply {
-//                        setAction("DISMISS") {
-//                            this.dismiss()
-//                        }
-//                        show()
-//                    }
-//            }
-//        })
+        viewModel.onAsync(MainState::request, deliveryMode = uniqueOnly(), onFail = {e->
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+
+            }
+
+        }, onSuccess = {
+            binding?.recycle?.models = it.data
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            }
+        })
     }
 
     override fun onCreateView(
@@ -80,7 +62,7 @@ class MainFragment : Fragment(), MavericksView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_hot_key,container,false)
+        val view = inflater.inflate(R.layout.fragment_hot_key, container, false)
         binding = DataBindingUtil.bind(view)
         return view
     }
@@ -96,7 +78,7 @@ class MainFragment : Fragment(), MavericksView {
 
             refresh.apply {
                 onRefresh {
-                    Log.d(TAG,"onRefresh")
+                    Log.d(TAG, "onRefresh")
                     viewModel.getHotKeys()
                 }
                 setEnableAutoLoadMore(false)

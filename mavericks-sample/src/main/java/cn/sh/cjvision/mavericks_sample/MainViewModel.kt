@@ -9,6 +9,7 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import com.airbnb.mvrx.hilt.AssistedViewModelFactory
 import com.airbnb.mvrx.hilt.hiltMavericksViewModelFactory
+import kotlinx.coroutines.launch
 
 class MainViewModel @AssistedInject constructor(
     @Assisted initState: MainState,
@@ -30,10 +31,15 @@ class MainViewModel @AssistedInject constructor(
 
     fun getHotKeys() = withState {
         if (it.request is Loading) return@withState
-        suspend {
-            repository.getHotKey()
-        }.execute(Dispatchers.IO, retainValue = MainState::request) { state ->
-            copy(request = state, hotKeys = state()?.data ?: emptyList())
+        viewModelScope.launch {
+            repository.getHotKey().execute(Dispatchers.IO,retainValue = MainState::request) { state->
+                copy(request = state, hotKeys = state()?.data?: emptyList())
+            }
         }
+//        suspend {
+//            repository.getHotKey()
+//        }.execute(Dispatchers.IO, retainValue = MainState::request) { state ->
+//            copy(request = state, hotKeys = state()?.data ?: emptyList())
+//        }
     }
 }

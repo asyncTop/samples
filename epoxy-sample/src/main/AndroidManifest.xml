@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Samples">
         <activity
+            android:name=".maverick.MaverickActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ViewActivity"
             android:exported="false" />
         <activity

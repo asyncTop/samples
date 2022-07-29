@@ -3,31 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
-
+        <variable
+            name="userName"
+            type="String" />
+        <variable
+            name="passWord"
+            type="String" />
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/teal_200"
+            android:gravity="center"
+            android:text="张三"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivHeader"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvName"
+
+        <EditText
+            android:id="@+id/inputName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{userName}"
+            app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+        <EditText
+            android:text="@{passWord}"
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/inputName" />
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="登录"
+            android:onClickListener="@{onClick}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivHeader" />
+            app:layout_constraintTop_toBottomOf="@id/inputPassword" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

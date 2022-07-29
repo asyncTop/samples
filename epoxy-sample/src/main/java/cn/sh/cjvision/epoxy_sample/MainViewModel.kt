@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(private var repository: MainRepository) 
 
     fun getArticle(){
         viewModelScope.launch {
-            repository.getHotKey()
+            repository.getArticles1()
                 .catch {
                     Log.d("ERROE",it.message?:"")
                 }
