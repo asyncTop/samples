@@ -32,9 +32,10 @@ class MainViewModel @AssistedInject constructor(
     fun getHotKeys() = withState {
         if (it.request is Loading) return@withState
         viewModelScope.launch {
-            repository.getHotKey().execute(Dispatchers.IO,retainValue = MainState::request) { state->
-                copy(request = state, hotKeys = state()?.data?: emptyList())
-            }
+            repository.getHotKey()
+                .execute(Dispatchers.IO, retainValue = MainState::request) { state ->
+                    copy(request = state, hotKeys = state()?.data ?: emptyList())
+                }
         }
 //        suspend {
 //            repository.getHotKey()

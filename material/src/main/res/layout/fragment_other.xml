@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/tvSingleLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="singleLine"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <HorizontalScrollView
+                android:id="@+id/scrollSingleLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@id/tvSingleLine">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupSingleLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/app_name"
+                        app:checkedIcon="@drawable/ic_copyright" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="hello"
+                        app:closeIcon="@drawable/ic_copyright"
+                        app:closeIconEnabled="true" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/app_name"
+                        app:checkedIcon="@drawable/ic_copyright" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="hello" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/app_name"
+                        app:checkedIcon="@drawable/ic_copyright" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="hello" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tvMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MultiLine"
+                app:layout_constraintTop_toBottomOf="@id/scrollSingleLine" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupMutiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvMultiLine">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/app_name"
+                    app:checkedIcon="@drawable/ic_copyright" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="hello"
+                    app:closeIcon="@drawable/ic_copyright"
+                    app:closeIconEnabled="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/app_name"
+                    app:checkedIcon="@drawable/ic_copyright" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="hello" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/app_name"
+                    app:checkedIcon="@drawable/ic_copyright"
+                    app:chipBackgroundColor="@color/teal_200" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="hello" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            android:visibility="invisible"
+            app:layout_behavior="com.google.android.material.transformation.FabTransformationScrimBehavior" />
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:id="@+id/coordinator"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_behavior="com.google.android.material.transformation.FabTransformationSheetBehavior"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintTop_toBottomOf="@id/chipGroupMutiLine">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tvFab"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                app:shapeAppearance="@style/cut10dp"
+                app:backgroundTint="@color/white"
+                android:gravity="center"
+                app:rippleColor="@color/purple_700"
+                android:text="@string/app_name"
+                 />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tvFab1"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                app:rippleColor="@color/purple_700"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/white"
+                android:gravity="center"
+                app:shapeAppearance="@style/cut10dp"
+                android:text="@string/app_name" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tvFab2"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                app:rippleColor="@color/purple_700"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/white"
+                android:gravity="center"
+                app:shapeAppearance="@style/cut10dp"
+                android:text="@string/app_name" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tvFab3"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                app:rippleColor="@color/purple_700"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/white"
+                android:gravity="center"
+                app:shapeAppearance="@style/cut10dp"
+                android:text="@string/app_name" />
+
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="end|bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

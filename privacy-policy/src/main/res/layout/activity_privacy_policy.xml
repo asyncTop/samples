@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_8_white"
+    android:paddingTop="6dp">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/btAgree"
+        app:layout_constraintTop_toBottomOf="@id/progress" />
+
+    <TextView
+        android:id="@+id/btAgree"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btCancel"
+        android:text="同意并继续"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:layout_marginStart="10dp"
+        android:textSize="16sp"
+        android:background="@drawable/bg_8_white"
+        android:backgroundTint="#ff377fff"
+        app:layout_constraintBottom_toBottomOf="@id/btCancel"
+        app:layout_constraintTop_toTopOf="@id/btCancel" />
+
+    <TextView
+        android:id="@+id/btCancel"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/btAgree"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_height="40dp"
+        android:text="不同意"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

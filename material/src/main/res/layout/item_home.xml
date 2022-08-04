@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        app:rippleColor="@color/teal_200"
+        android:onClickListener="@{onClick}"
+        android:layout_height="70dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@{title}"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_height="match_parent"/>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

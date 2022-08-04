@@ -16,4 +16,9 @@ dependencyResolutionManagement {
 rootProject.name = "samples"
 include ':mavericks-sample'
 include ':lib-common'
+include ':navigation-sample'
+include ':lib-webview'
+include ':lottie-sample'
 include ':epoxy-sample'
+include ':privacy-policy'
+include ':material'
